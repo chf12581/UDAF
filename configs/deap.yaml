@@ -1,0 +1,49 @@
+# Separate runs/manifests for Valence and Arousal. Batch: 2 classes x 15 trials x 1 observation.
+seed: 42
+protocol: subject_dependent
+channels: 32
+imagenet_pretrained: true
+augment_face: false
+workers: 0
+cpu_threads: 4
+samples_train: 3
+samples_eval: 9
+selection: final_epoch
+weight_decay: 0.001
+model:
+  eeg_dimension: 16
+  face_dimension: 512
+  dimension: 256
+  hidden: 128
+  num_classes: 2
+  dropout: 0.3
+  v0: 0.01
+  eps: 1.0e-06
+  variant: full
+  attention_heads: 4
+loss:
+  det: 0.05
+  adapter: 0.1
+  uncertainty_ratio: 0.1
+  mls: 0.05
+  cross: 0.0001
+batch:
+  trials_per_class: 15
+  observations: 1
+stages:
+  eeg:
+    epochs: 300
+    learning_rate: 0.001
+    batch_size: 32
+  face_head:
+    epochs: 5
+    learning_rate: 0.0005
+    batch_size: 64
+  face_finetune:
+    epochs: 8
+    learning_rate: 5.0e-06
+    batch_size: 64
+  fusion:
+    epochs: 100
+    learning_rate: 0.0001
+    batch_size: 64

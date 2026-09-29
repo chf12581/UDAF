@@ -1,0 +1,7 @@
+# Versions used for validation. Install torch/torchvision for your CPU/CUDA runtime.
+numpy==2.2.6
+torch==2.5.1
+torchvision==0.20.1
+PyYAML==6.0.3
+Pillow==12.0.0
+pytest==9.0.3

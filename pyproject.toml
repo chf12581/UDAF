@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "udaf-net-paper-reference"
+version = "0.1.0"
+description = "Manuscript reference implementation of UDAF-Net for EEG-face emotion recognition"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = ["numpy>=1.24,<3", "torch>=2.1", "torchvision>=0.16", "PyYAML>=6", "Pillow>=9"]
+
+[project.optional-dependencies]
+test = ["pytest>=8"]
+
+[tool.setuptools.packages.find]
+include = ["udaf_net*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
